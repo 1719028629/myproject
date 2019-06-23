@@ -11,13 +11,13 @@ import '@/assets/css/index.css'
 // 导入element-ui
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-
-// 导入axios,添加到vue原型中
-import axios from 'axios'
-
+// 引入没有axios
+import myaxios from './js/myaxios'
+// 使用element-ui
 Vue.use(ElementUI)
 
-Vue.prototype.$http = axios
+// 使用axios插件
+Vue.use(myaxios)
 
 Vue.config.productionTip = false
 

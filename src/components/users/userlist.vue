@@ -130,6 +130,7 @@
         <el-form-item label="请选择角色">
           <!-- selectRoledata.rid 当前用户对应的角色id值  -->
           <el-select v-model="selectRoledata.rid">
+            <!-- 新增的用户没有设置角色对应的id值为-1 ,当为-1时就显示"请选择角色" label每一项显示的值 -->
             <el-option :value="-1" label="请选择角色" disabled></el-option>
             <!-- label 显示的角色每一项   value就是角色对应的id值-->
             <el-option
@@ -209,7 +210,7 @@ export default {
     gettableData () {
       this.$http({
         method: 'GET',
-        url: `http://localhost:8888/api/private/v1/users?query=${this.query}&pagesize=${this.pageSize}&pagenum=${this.pagenum}`,
+        url: `users?query=${this.query}&pagesize=${this.pageSize}&pagenum=${this.pagenum}`,
         headers: {
           Authorization: window.localStorage.getItem('token')
         }
@@ -259,7 +260,7 @@ export default {
           // 验证通过,添加数据
           this.$http({
             method: 'POST',
-            url: 'http://localhost:8888/api/private/v1/users',
+            url: 'users',
             data: this.addUser,
             headers: {
               Authorization: window.localStorage.getItem('token')
@@ -309,7 +310,7 @@ export default {
         // 确定执行,调用接口
         this.$http({
           method: 'DELETE',
-          url: 'http://localhost:8888/api/private/v1/users/' + id,
+          url: 'users/' + id,
           headers: {
             Authorization: window.localStorage.getItem('token')
           }
@@ -342,7 +343,7 @@ export default {
       // 调用接口
       this.$http({
         method: 'put',
-        url: `http://localhost:8888/api/private/v1/users/${id}/state/${val}`,
+        url: `users/${id}/state/${val}`,
         headers: {
           Authorization: window.localStorage.getItem('token')
         }
@@ -370,7 +371,7 @@ export default {
       // 根据id获取数据
       this.$http({
         method: 'GET',
-        url: `http://localhost:8888/api/private/v1/users/${id}`,
+        url: `users/${id}`,
         headers: {
           Authorization: window.localStorage.getItem('token')
         }
@@ -391,7 +392,7 @@ export default {
       // 请求修改接口
       this.$http({
         method: 'PUT',
-        url: `http://localhost:8888/api/private/v1/users/${id}`,
+        url: `users/${id}`,
         data: this.editFormData,
         headers: {
           Authorization: window.localStorage.getItem('token')
@@ -419,7 +420,7 @@ export default {
       // 获取数据
       this.$http({
         method: 'get',
-        url: 'http://localhost:8888/api/private/v1/roles',
+        url: 'roles',
         headers: {
           Authorization: window.localStorage.getItem('token')
         }
@@ -433,7 +434,7 @@ export default {
       // 根据id获取数据
       this.$http({
         method: 'GET',
-        url: `http://localhost:8888/api/private/v1/users/${id}`,
+        url: `users/${id}`,
         headers: {
           Authorization: window.localStorage.getItem('token')
         }
@@ -451,7 +452,7 @@ export default {
       // 发送修改请求
       this.$http({
         method: 'put',
-        url: `http://localhost:8888/api/private/v1/users/${this.selectRoledata.id}/role`,
+        url: `users/${this.selectRoledata.id}/role`,
         data: {
           rid: this.selectRoledata.rid
         },

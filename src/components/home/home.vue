@@ -19,9 +19,9 @@
 
 <script>
 // 导入头部
-import Tophead from '../../components/home/tophead.vue'
+import Tophead from '@/components/home/tophead.vue'
 // 导入侧边栏
-import Sidebar from '../../components/home/sidebar.vue'
+import Sidebar from '@/components/home/sidebar.vue'
 
 export default {
   data () {
